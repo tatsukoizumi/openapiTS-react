@@ -1,4 +1,4 @@
-import { paths } from "./schema"
+import { paths } from "./schema.gen"
 
 export type ApiPath = keyof paths
 
