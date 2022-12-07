@@ -1,9 +1,33 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import reactLogo from "./assets/react.svg"
 import "./App.css"
+import { createApiClient } from "../api-client"
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const createPet = async () => {
+    const api = createApiClient({
+      path: "/pets",
+      httpMethod: "post",
+      params: {
+        body: {
+          name: "new_pet",
+        },
+      },
+    })
+    const res = await api.request()
+    if (res.result === "success") {
+      console.log(res.data)
+    }
+    if (res.result === "error") {
+      if (res.error.status === 400) {
+        const validationError = res.error.data.validationError
+        console.error("error field is", validationError.field)
+      }
+      console.error(res.error.data.message)
+    }
+  }
 
   return (
     <div className="App">
