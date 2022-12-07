@@ -70,15 +70,6 @@ export interface operations {
           "application/json": components["schemas"]["Pets"];
         };
       };
-      /** @description Bad Request */
-      400: {
-        content: {
-          "application/json": {
-            message?: string;
-            validationError?: components["schemas"]["PetValidationError"];
-          };
-        };
-      };
       /** @description unexpected error */
       default: {
         content: {
@@ -99,6 +90,15 @@ export interface operations {
     responses: {
       /** @description Null response */
       201: never;
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": {
+            message?: string;
+            validationError?: components["schemas"]["PetValidationError"];
+          };
+        };
+      };
       /** @description unexpected error */
       default: {
         content: {
