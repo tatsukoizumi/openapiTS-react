@@ -25,7 +25,8 @@ export interface components {
       /** Format: int64 */
       id: number;
       name: string;
-      tag?: string;
+      /** @enum {string} */
+      category?: "dog" | "cat";
     };
     Pets: (components["schemas"]["Pet"])[];
     Error: {
