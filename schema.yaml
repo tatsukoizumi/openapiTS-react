@@ -5,7 +5,7 @@ info:
   license:
     name: MIT
 servers:
-  - url: "http://petstore.swagger.io/v1"
+  - url: 'http://petstore.swagger.io/v1'
 paths:
   /pets:
     get:
@@ -23,7 +23,7 @@ paths:
             maximum: 100
             format: int32
       responses:
-        "200":
+        '200':
           description: A paged array of pets
           headers:
             x-next:
@@ -33,27 +33,38 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: '#/components/schemas/Pets'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create a pet
       operationId: createPets
       tags:
         - pets
       responses:
-        "201":
+        '201':
           description: Null response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  validationError:
+                    $ref: '#/components/schemas/PetValidationError'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
       requestBody:
         content:
           application/json:
@@ -62,7 +73,7 @@ paths:
               properties:
                 name:
                   type: string
-  "/pets/{petId}":
+  '/pets/{petId}':
     get:
       summary: Info for a specific pet
       operationId: showPetById
@@ -76,20 +87,24 @@ paths:
           schema:
             type: string
       responses:
-        "201":
-          description: Created
-        "400":
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
           description: Expected response to a valid request
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pet"
+                $ref: '#/components/schemas/Pet'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Pet:
@@ -112,7 +127,7 @@ components:
       type: array
       maxItems: 100
       items:
-        $ref: "#/components/schemas/Pet"
+        $ref: '#/components/schemas/Pet'
     Error:
       type: object
       required:
@@ -124,3 +139,14 @@ components:
           format: int32
         message:
           type: string
+    PetValidationError:
+      title: PetValidationError
+      x-stoplight:
+        id: xttfnvel5oaox
+      type: object
+      properties:
+        field:
+          type: string
+          enum:
+            - name
+            - category

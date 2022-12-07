@@ -34,6 +34,11 @@ export interface components {
       code: number;
       message: string;
     };
+    /** PetValidationError */
+    PetValidationError: {
+      /** @enum {string} */
+      field?: "name" | "category";
+    };
   };
   responses: never;
   parameters: never;
@@ -63,6 +68,15 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Pets"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": {
+            message?: string;
+            validationError?: components["schemas"]["PetValidationError"];
+          };
         };
       };
       /** @description unexpected error */
@@ -102,8 +116,12 @@ export interface operations {
       };
     };
     responses: {
-      /** @description Created */
-      201: never;
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["Pet"];
+        };
+      };
       /** @description Expected response to a valid request */
       400: {
         content: {
