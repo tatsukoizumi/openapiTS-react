@@ -36,7 +36,7 @@ type GetNestedValue<
   : Keys extends [infer First, ...infer Rest]
   ? First extends keyof T
     ? Rest extends (string | number)[]
-      ? GetNestedValue<Required<T[First]>, Rest>
+      ? GetNestedValue<T[First], Rest>
       : never
     : never
   : never

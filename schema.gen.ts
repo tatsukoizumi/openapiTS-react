@@ -94,8 +94,8 @@ export interface operations {
       400: {
         content: {
           "application/json": {
-            message?: string;
-            validationError?: components["schemas"]["PetValidationError"];
+            message: string;
+            validationError: components["schemas"]["PetValidationError"];
           };
         };
       };

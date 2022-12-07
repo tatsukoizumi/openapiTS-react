@@ -59,6 +59,9 @@ paths:
                     type: string
                   validationError:
                     $ref: '#/components/schemas/PetValidationError'
+                required:
+                  - message
+                  - validationError
         default:
           description: unexpected error
           content:
