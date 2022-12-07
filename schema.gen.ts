@@ -75,6 +75,13 @@ export interface operations {
   };
   createPets: {
     /** Create a pet */
+    requestBody?: {
+      content: {
+        "application/json": {
+          name?: string;
+        };
+      };
+    };
     responses: {
       /** @description Null response */
       201: never;
@@ -95,8 +102,10 @@ export interface operations {
       };
     };
     responses: {
+      /** @description Created */
+      201: never;
       /** @description Expected response to a valid request */
-      200: {
+      400: {
         content: {
           "application/json": components["schemas"]["Pet"];
         };
