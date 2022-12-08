@@ -1,4 +1,4 @@
-import { createApiClient } from "./api/api-client"
+import { createApiClient } from "./api/client"
 import { useFetch } from "./api/use-fetch"
 
 function App() {

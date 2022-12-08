@@ -6,7 +6,7 @@ import {
   ExactPathByHttpMethod,
 } from "./schema-util"
 import useSWR, { SWRConfiguration } from "swr"
-import { createApiClient, RequestResponse } from "./api-client"
+import { createApiClient, RequestResponse } from "./client"
 import { useCallback, useMemo } from "react"
 
 type GetPath = ExactPathByHttpMethod<"get">

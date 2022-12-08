@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { createApiClient } from "./api-client"
+import { createApiClient } from "./client"
 import {
   ApiBody,
   ApiError,
