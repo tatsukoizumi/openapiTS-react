@@ -1,5 +1,5 @@
-import { createApiClient } from "../api-client"
-import { useFetch } from "./use-fetch"
+import { createApiClient } from "./api/api-client"
+import { useFetch } from "./api/use-fetch"
 
 function App() {
   const petId = "petId"

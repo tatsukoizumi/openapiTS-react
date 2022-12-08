@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { createApiClient } from "../api-client"
+import { createApiClient } from "./api-client"
 import {
   ApiBody,
   ApiError,
@@ -8,7 +8,7 @@ import {
   ExactHttpMethodByPath,
   ExactPathByHttpMethod,
   HttpMethod,
-} from "../schema-util"
+} from "../api/schema-util"
 
 type SubmitHttpMethod = Exclude<HttpMethod, "get">
 type SubmitPath = ExactPathByHttpMethod<SubmitHttpMethod>

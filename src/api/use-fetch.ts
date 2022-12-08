@@ -1,12 +1,12 @@
-import { ApiError } from "./../schema-util"
 import {
+  ApiError,
   ApiPathParam,
   ApiQueryParam,
   ApiResponse,
   ExactPathByHttpMethod,
-} from "../schema-util"
+} from "./schema-util"
 import useSWR, { SWRConfiguration } from "swr"
-import { createApiClient, RequestResponse } from "../api-client"
+import { createApiClient, RequestResponse } from "./api-client"
 import { useCallback, useMemo } from "react"
 
 type GetPath = ExactPathByHttpMethod<"get">
